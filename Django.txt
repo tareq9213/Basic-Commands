@@ -1,0 +1,65 @@
+For getting help in the command prompt just type::
+-python manage.py help
+
+ᴄʀᴇᴀᴛɪɴɢ ᴀ ᴘʀᴏᴊᴇᴄᴛ::
+-django-admin startproject mysite
+
+ᴇɴᴛᴇʀ ᴛʜᴇ ᴘʀᴏᴊᴇᴄᴛ ᴅɪʀᴇᴄᴛᴏʀʏ::
+-cd mysite
+
+ᴄʀᴇᴀᴛᴇ ᴠɪʀᴛᴜᴀʟ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ::
+-virtualenv menv
+
+ᴀᴄᴛɪᴠᴀᴛᴇ ᴛʜᴇ ᴠɪʀᴛᴜᴀʟ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ::
+-menv\scripts\activate
+
+ɪɴsᴛᴀʟʟ ᴅᴊᴀɴɢᴏ::
+-pip install django==2.2.7
+
+ᴄʜᴇᴄᴋ ᴡʜᴀᴛ ɪs ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴛʜᴇ ᴠɪʀᴛᴜᴀʟ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ::
+-pip freeze
+
+ʀᴜɴsᴇʀᴠᴇʀ ᴄᴏᴍᴍᴀɴᴅ::
+-python manage.py runserver
+
+ᴀᴘᴘ ᴄʀᴇᴀᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅ::
+-python manage.py startapp polls
+
+ғᴏʀ ᴀᴅᴅɪɴɢ ʜᴛᴍʟ ᴛᴇᴍᴘʟᴀᴛᴇs ᴡᴇ ʜᴀᴠᴇ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ᴛᴇᴍᴘʟᴀᴛᴇs sᴇᴛᴛɪɴɢs ᴅɪʀ:::
+-'ᴅɪʀs': [ᴏs.ᴘᴀᴛʜ.ᴊᴏɪɴ(ʙᴀsᴇ_ᴅɪʀ,'ᴛᴇᴍᴘʟᴀᴛᴇs')],
+
+for loading pages in html:::
+- {% load static %}
+- {% static %}
+
+ᴛᴏ ᴇxᴛᴇɴᴅ ɪɴ ʜᴛᴍʟ ᴘᴀɢᴇs ᴡᴇ ʜᴀᴠᴇ ᴛᴏ ᴜsᴇ:::
+- {% ᴇxᴛᴇɴᴅs 'ʙᴀsᴇ.ʜᴛᴍʟ' %}
+
+ғᴏʀ ᴀᴄᴄᴇssɪɴɢ sᴛᴀᴛɪᴄ ғɪʟᴇs ɪɴ sᴇᴛᴛɪɴɢs::
+-STATICFILES_DIRS =  [os.path.join(BASE_DIR,'static')]
+-STATIC_ROOT = os.path.join(BASE_DIR,'assets')
+
+ғᴏʀ ᴀᴄᴄᴇssɪɴɢ sᴛᴀᴛɪᴄ ғɪʟᴇs ɪɴ ᴍᴀɪɴ ᴘʀᴏᴊᴇᴄᴛs ᴜʀʟ::
+-if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+ʟɪʙʀᴀʀʏ ғᴏʀ sᴛᴀᴛɪᴄ ғɪʟᴇs::
+from django.conf import settings
+from django.conf.urls.static import static
+
+for creating django model we have to first migrate the model using::
+-python manage.py makemigrations
+-python manage.py sqlmigrate sexa 0001
+-python manage.py migrate
+
+Creating superusr for admin panel::
+-python manage.py createsuperuser
+
+For registering model into the admin we have to edit the apps admin.py and use the command below::
+-from .models import Destination (Library Files)
+-admin.site.register(Destination)
+
+When we add and fetch data from database the we have to edit our settings using::
+-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+-MEDIA_URL = '/media/'
