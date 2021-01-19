@@ -63,3 +63,8 @@ For registering model into the admin we have to edit the apps admin.py and use t
 When we add and fetch data from database the we have to edit our settings using::
 -MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 -MEDIA_URL = '/media/'
+
+
+Uses of Fstring::
+  def __str__(self):
+        return f" Name:  {self.name}, email: {self.email}, User: {self.user}"
